@@ -9,8 +9,9 @@ import { cld, uploadPreset } from './cloudinary/config';
 import { UploadWidget } from './cloudinary/UploadWidget';
 import type { CloudinaryUploadResult } from './cloudinary/UploadWidget';
 import './App.css';
+import Home from "./pages/Home";
 
-const hasUploadPreset = Boolean(uploadPreset);
+/* const hasUploadPreset = Boolean(uploadPreset);
 
 const PROMPTS_WITH_UPLOAD = [
   'Create an image gallery with lazy loading and responsive images',
@@ -21,10 +22,10 @@ const PROMPTS_WITH_UPLOAD = [
 const PROMPTS_WITHOUT_UPLOAD = [
   "Let's try uploading — help me add an upload preset and upload widget",
   ...PROMPTS_WITH_UPLOAD,
-];
-
+]; */
+  
 function App() {
-  const [uploadedImageId, setUploadedImageId] = useState<string | null>(null);
+  /* const [uploadedImageId, setUploadedImageId] = useState<string | null>(null);
   const [uploadedUrl, setUploadedUrl] = useState<string | null>(null);
   const [clickedIds, setClickedIds] = useState(new Set<number>());
 
@@ -65,67 +66,9 @@ function App() {
     .image(imageId)
     .resize(fill().width(600).height(400).gravity(autoGravity()))
     .delivery(format(auto()))
-    .delivery(quality(autoQuality()));
+    .delivery(quality(autoQuality())); */
 
-  return (
-    <div className="app">
-      <main className="main-content">
-        <h1>Cloudinary React Starter Kit</h1>
-        <p>This is a ready-to-use development environment with Cloudinary integration.</p>
-        
-        {hasUploadPreset && (
-          <div className="upload-section">
-            <h2>Upload an Image</h2>
-            <UploadWidget
-              onUploadSuccess={handleUploadSuccess}
-              onUploadError={handleUploadError}
-              buttonText="Upload Image"
-            />
-          </div>
-        )}
-
-        <div className="image-section">
-          <h2>Display Image</h2>
-          <AdvancedImage
-            cldImg={displayImage}
-            plugins={[placeholder({ mode: 'blur' }), lazyload()]}
-            alt={uploadedImageId ? 'Your uploaded image' : 'Sample image'}
-            className="display-image"
-          />
-          {uploadedImageId && (
-            <p className="image-info">Public ID: {uploadedImageId}</p>
-          )}
-          {uploadedUrl && (
-            <p className="image-info">
-              URL:{' '}
-              <a href={uploadedUrl} target="_blank" rel="noopener noreferrer">
-                {uploadedUrl}
-              </a>
-            </p>
-          )}
-        </div>
-
-        <div className="ai-prompts-section">
-          <h2>🤖 Try Asking Your AI Assistant</h2>
-          <p className="prompts-intro">
-            <strong>Copy and paste</strong> one of these prompts into your AI assistant:
-          </p>
-          <ul className="prompts-list">
-            {(hasUploadPreset ? PROMPTS_WITH_UPLOAD : PROMPTS_WITHOUT_UPLOAD).map((text, i) => (
-              <li
-                key={i}
-                onClick={() => copyPrompt(text, i)}
-                title="Click to copy"
-                className={clickedIds.has(i) ? 'clicked' : ''}
-              >
-                {text}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </main>
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;

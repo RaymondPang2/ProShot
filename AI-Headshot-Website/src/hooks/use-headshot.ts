@@ -1,12 +1,26 @@
 import { useState } from "react";
 import type { UploadStatus } from "../types";
+import type { CloudinaryUploadResult } from "../cloudinary/UploadWidget";
 
 export function useHeadshot() {
     const [uploadStatus, setUploadStatus] = useState<UploadStatus>("idle");
     const [uploadError, setUploadError] = useState<string | null>(null);
+    const [publicId, setPublicId] = useState<string | null>(null);
+    const [selectedPresetId, setSelectedPresetId] = useState<string | null>(null);
 
     const handleUploadStart = () => {
         setUploadStatus('uploading');
+        setUploadError(null);
+    };
+
+    const handleUploadSuccess = (result: CloudinaryUploadResult) => {
+        if (result.resource_type !== "image") {
+            setUploadStatus("error");
+            setUploadError("Please upload an image file (JPG, PNG, or WEBP).");
+            return;
+        }
+
+        setUploadStatus("success");
         setUploadError(null);
     };
 
@@ -22,5 +36,6 @@ export function useHeadshot() {
         uploadStatus,
         handleUploadError,
         handleUploadStart,
+        handleUploadSuccess,
     };
 }

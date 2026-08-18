@@ -1,5 +1,13 @@
 import { ImageIcon } from "lucide-react";
 import type { UploadStatus } from "../types";
+import { useDropzone } from "react-dropzone";
+
+
+const ACCEPT = {
+  "image/jpeg": [".jpg", ".jpeg"],
+  "image/png": [".png"],
+  "image/webp": [".webp"],
+};
 
 interface UploadCardProps {
   uploadStatus: UploadStatus;
@@ -14,12 +22,38 @@ export default function UploadCard({
   onUploadError,
   onUploadStart,
 }: UploadCardProps) {
+    const [progress, setProgress] = useState(0);
   const uploadFile = async (file: File) => {
+    onUploadStart();
+    setProgress(0);
     try {
+
     } catch (error) {
-      console.error(error);
+      console.error(new Error("Upload failed."));
     }
   };
+
+  const onDrop = (acceptedFiles: File[]) => {
+    if (acceptedFiles.length === 0) {
+      onUploadError(new Error("Please upload a JPG, PNG, or WEBP image."));
+      return;
+    }
+
+    uploadFile(acceptedFiles[0]);
+
+    console.log(acceptedFiles);
+  };
+
+  const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
+    onDrop,
+    accept: ACCEPT,
+    maxFiles: 1,
+    multiple: false,
+    disabled: uploadStatus === "uploading",
+  });
+
+  const isUploading = uploadStatus === "uploading";
+
   return (
     <section id="upload" className="px-4 py-12">
       <div className="mx-auto max-w-2xl">
@@ -31,8 +65,15 @@ export default function UploadCard({
           Drag, drop, or click to upload your photo
         </p>
 
-        <div className="glass-card relative flex cursor-pointer flex-col items-center gap-6 p-12">
-          <input />
+        <div 
+          {...getRootProps()} 
+          className={cn(
+            "glass-card relative flex cursor-pointer flex-col items-center gap-6 p-10 transition",
+            isDragActive && "border-indigo-500/50 bg-indigo-500/10",
+            isUploading && "pointer-events-none opacity-80",
+          )}
+        >
+          <input {...getInputProps()} />
 
           <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-indigo-500/10">
             <ImageIcon className="h-10 w-10" />
@@ -44,8 +85,21 @@ export default function UploadCard({
               or click to browse · JPG, PNG, or WEBP
             </p>
           </div>
+
+          {isUploading && (
+            <div>
+                <div>
+                <div></div>
+                </div>
+                <p>Uploading...</p>
+            </div>
+            )}
         </div>
       </div>
     </section>
   );
+}
+
+function useState(arg0: number): [any, any] {
+    throw new Error("Function not implemented.");
 }

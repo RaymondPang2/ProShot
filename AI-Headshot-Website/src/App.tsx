@@ -8,7 +8,6 @@ import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
 import { cld, uploadPreset } from './cloudinary/config';
 import { UploadWidget } from './cloudinary/UploadWidget';
 import type { CloudinaryUploadResult } from './cloudinary/UploadWidget';
-import './App.css';
 import Home from "./pages/Home";
 
 /* const hasUploadPreset = Boolean(uploadPreset);

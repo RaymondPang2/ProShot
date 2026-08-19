@@ -1,6 +1,7 @@
 import type { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import type { HeadshotPreset } from "../types";
 import { AdvancedImage, placeholder, lazyload } from "@cloudinary/react";
+import { cn } from "../lib/utils";
 
 interface PresetImage {
     preset: HeadshotPreset;
@@ -10,24 +11,40 @@ interface PresetImage {
 interface TransformationGridProps {
     title: string;
     presets: PresetImage[];
+    selectedPresetId: string | null
+    onSelect: (id: string) => void;
 }
 
 function PresetCard({
   preset,
   image,
+  isSelected,
+  onSelect,
 }: {
   preset: HeadshotPreset;
   image: CloudinaryImage;
+  isSelected: boolean;
+  onSelect: () => void;
 }) {
   return (
-    <button>
-      <div>
+    <button onClick={onSelect} type="button">
+      <div 
+        className={cn(
+            "relative aspect-[4/5] w-full overflow-hidden bg-black/30 border-2 rounded-xl", 
+            isSelected ? "border-indigo-500" : "border-transparent",
+        )}
+    >
         <AdvancedImage
           cldImg={image}
           plugins={[placeholder({ mode: "blur" }), lazyload()]}
           alt="Original Upload"
           className="mx-auto rounded-xl shadow-lg"
         />
+      </div>
+
+      <div className="p-4">
+        <h4 className="font-semibold">{preset.name}</h4>
+        <p className="mt-1 text-xs text-white/50">{preset.description}</p>
       </div>
     </button>
   );
@@ -36,6 +53,8 @@ function PresetCard({
 export default function TransformationGrid({
     title,
     presets,
+    onSelect,
+    selectedPresetId
 }: TransformationGridProps){
     if (presets.length === 0) return null;
 
@@ -52,10 +71,16 @@ export default function TransformationGrid({
                     Styles generate one at a time (~30–60s each).
                 </p>
 
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
-                    {presets.map(({preset, image}) => (
-                        <PresetCard preset={preset} image={image}/>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {presets.map(({ preset, image }) => (
+                        <PresetCard
+                        preset={preset}
+                        image={image}
+                        isSelected={selectedPresetId === preset.id}
+                        onSelect={() => onSelect(preset.id)}
+                        />
                     ))}
+                </div>
             </div>
         </section>
     );

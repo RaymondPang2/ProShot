@@ -1,7 +1,9 @@
 import { useMemo, useState } from "react";
 import type { UploadStatus } from "../types";
 import type { CloudinaryUploadResult } from "../cloudinary/UploadWidget";
-import { buildOriginalPreview } from "../lib/transformations";
+import { ALL_PRESETS, buildOriginalPreview, getPresetById } from "../lib/transformations";
+import { image } from "@cloudinary/url-gen/qualifiers/source";
+import type { CloudinaryImage } from "@cloudinary/url-gen/index";
 
 export function useHeadshot() {
     const [uploadStatus, setUploadStatus] = useState<UploadStatus>("idle");
@@ -37,10 +39,23 @@ export function useHeadshot() {
         return buildOriginalPreview(publicId);
     }, [publicId]);
 
-    const presetImages = useMemo(()=> {
-        if(!publicId) return [];
-        
+    const presetImages = useMemo(() => {
+        if (!publicId) return [];
+        return ALL_PRESETS.map((preset) => ({
+            preset,
+            image: preset.build(publicId),
+        }));
     }, [publicId]);
+
+    const selectedPreset = selectedPresetId 
+        ? (getPresetById(selectedPresetId) ?? null) 
+        : null;
+
+    const selectedImage: CloudinaryImage | null = useMemo(() => {
+        if (!publicId || !selectedPreset) return null;
+        return selectedPreset.build(publicId);
+
+    }, [publicId, selectedPreset])
 
     return{
         uploadError,
@@ -49,5 +64,12 @@ export function useHeadshot() {
         handleUploadStart,
         handleUploadSuccess,
         originalImage,
+        presetImages,
+        hasUpload: Boolean(publicId),
+        selectPreset: setSelectedPresetId,
+        selectedPresetId, 
+        selectedImage,
+        selectedPreset,
+        publicId,
     };
 }

@@ -2,6 +2,7 @@ import type { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage
 import type { HeadshotPreset } from "../types";
 import { AdvancedImage, placeholder, lazyload } from "@cloudinary/react";
 import { cn } from "../lib/utils";
+import { Check } from "lucide-react";
 
 interface PresetImage {
     preset: HeadshotPreset;
@@ -30,7 +31,7 @@ function PresetCard({
     <button onClick={onSelect} type="button">
       <div 
         className={cn(
-            "relative aspect-[4/5] w-full overflow-hidden bg-black/30 border-2 rounded-xl", 
+            "relative aspect-[4/5] w-full overflow-hidden bg-black/30 border-1 rounded-xl", 
             isSelected ? "border-indigo-500" : "border-transparent",
         )}
     >
@@ -40,6 +41,12 @@ function PresetCard({
           alt="Original Upload"
           className="mx-auto rounded-xl shadow-lg"
         />
+
+        {isSelected && (
+            <div className="absolute right-2 top-2 rounded-full bg-indigo-600 p-1">
+                <Check className="h-4 w-4 text-white" />
+            </div>
+        )}
       </div>
 
       <div className="p-4">

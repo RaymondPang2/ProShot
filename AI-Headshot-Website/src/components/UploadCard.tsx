@@ -1,7 +1,10 @@
-import { ImageIcon } from "lucide-react";
+import { AlertCircle, ImageIcon } from "lucide-react";
 import type { UploadStatus } from "../types";
 import { useDropzone } from "react-dropzone";
-import type { CloudinaryUploadResult } from "../cloudinary/UploadWidget";
+import { UploadWidget, type CloudinaryUploadResult } from "../cloudinary/UploadWidget";
+import { uploadImageToCloudinary } from "../cloudinary/upload-direct";
+import { cn } from "../lib/utils";
+import { useState } from "react";
 
 
 const ACCEPT = {
@@ -97,13 +100,32 @@ export default function UploadCard({
                 </div>
                 <p>Uploading... {progress > 0 ? `${progress}%` : ""}</p>
             </div>
-            )}
+          )}
+
+          <div
+            className="flex items-center gap-3"
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
+          >
+            <UploadWidget 
+              onUploadSuccess={onUploadSuccess}
+              onUploadError={onUploadError}
+              buttonText="Browse Files"
+              className={cn(
+                "inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 font-medium",
+                "transition hover:bg-indigo-500 disabled:cursor-wait disabled:opacity-70",
+              )}
+            />
+          </div>
+
+          {true && (
+            <div className="flex items-center gap-2 rounded-lg bg-red-500/10 px-4 py-2 text-sm text-red-300">
+              <AlertCircle className="h-4 w-4 shrink-0" />
+              {uploadError}
+            </div>
+          )}
         </div>
       </div>
     </section>
   );
-}
-
-function useState(arg0: number): [any, any] {
-    throw new Error("Function not implemented.");
 }

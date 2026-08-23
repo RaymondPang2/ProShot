@@ -1,11 +1,10 @@
-
 # ProShot
 
-AI-powered professional headshot generator — upload a portrait, choose a style, preview the transformation, and export the finished image.
+AI-powered professional headshot generator — upload a portrait, choose or customize a style, preview the transformation, and export the finished image.
 
 ## Demo Link
 
-Access the live demo at [your-demo-url.com](https://your-demo-url.com/) *(replace this with your deployed URL — the app can also be run locally; see [Setup](#setup)).*
+Access the live demo at ([https://your-demo-url.com/](http://localhost:5173/)) — the app can also be run locally; see [Setup](#setup)).*
 
 ## Table of Contents
 
@@ -33,6 +32,7 @@ The application uses Cloudinary's generative image transformations to replace ba
 - Image previews with optimized loading
 - Multiple export format options
 - Responsive design for desktop and mobile devices
+- Custom background descriptions for personalized AI-generated settings
 
 ## Screenshots
 
@@ -48,13 +48,6 @@ More screenshots of the upload screen, preset selection, generated results, and 
 
 I used `React`, `TypeScript`, `Vite`, `Tailwind CSS`, `Cloudinary`, `React Dropzone`, and `Lucide React`.
 
-- **React** — builds the component-based user interface
-- **TypeScript** — adds type safety throughout the application
-- **Vite** — provides the development server and production build tools
-- **Tailwind CSS** — handles responsive styling
-- **Cloudinary** — uploads, transforms, optimizes, and exports images
-- **React Dropzone** — provides drag-and-drop file uploads
-- **Lucide React** — provides interface icons
 
 ## Setup
 
@@ -111,7 +104,7 @@ Future improvements may include custom transformation prompts, additional profes
 - [Raymond Pang](https://github.com/RaymondPang2) — project development and customization
 - [Cloudinary](https://cloudinary.com/) — image transformations, optimization, and delivery
 
-This project was initially built by following the [Build a Production Ready AI Headshot Generator](https://www.youtube.com/watch?v=rbqlqqD4q34) tutorial. I expanded and customized it by adding additional headshot presets, export options, and UI improvements.
+This foundation of the project was initially built by following the [Build a Production Ready AI Headshot Generator](https://www.youtube.com/watch?v=rbqlqqD4q34) tutorial. I expanded and customized it by adding additional headshot presets, export options, and UI improvements.
 
 ## License
 

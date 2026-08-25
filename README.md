@@ -19,7 +19,7 @@ Access the live demo at ([https://your-demo-url.com/](http://localhost:5173/)) -
 
 ## About the App
 
-**ProShot** is a web application that turns an uploaded portrait into a polished professional headshot. Users can choose from different preset styles, preview the result, and export the final image in their preferred format.
+**ProShot** is a web application that turns an uploaded portrait into a polished professional headshot. Users can choose and customize from different preset styles, preview the result, and export the final image in their preferred format.
 
 The application uses Cloudinary's generative image transformations to replace backgrounds and clothing while keeping the uploaded person as the subject. It also automatically crops, resizes, and optimizes each image to produce a consistent portrait layout.
 

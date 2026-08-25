@@ -6,7 +6,7 @@ AI-powered professional headshot generator - upload a portrait, choose or custom
 
 Access the live demo at: http://localhost:5173 - the app is ran locally; see [Setup](#setup)).
 
-Or watch the video demo (with captions): https://drive.google.com/file/d/1BhnjTBSjyXYBaOiz38Wv4vm_NHf7A6E_/view?usp=sharing
+Or watch the captioned video demo: https://drive.google.com/file/d/1BhnjTBSjyXYBaOiz38Wv4vm_NHf7A6E_/view?usp=sharing
 
 ## Table of Contents
 

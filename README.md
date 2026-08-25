@@ -68,7 +68,17 @@ I used `React`, `TypeScript`, `Vite`, `Tailwind CSS`, `Cloudinary`, `React Dropz
 
   ```env
   VITE_CLOUDINARY_CLOUD_NAME=your_cloud_name
+  VITE_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
   ```
+  
+- In Cloudinary, create an unsigned upload preset:
+
+1. Open Settings
+2. Go to Upload
+3. Find Upload presets
+4. Create a new preset
+5. Set its signing mode to Unsigned
+6. Copy the preset name into your .env file
 
 - Start the development server:
 

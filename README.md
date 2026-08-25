@@ -1,10 +1,10 @@
 # ProShot
 
-AI-powered professional headshot generator — upload a portrait, choose or customize a style, preview the transformation, and export the finished image.
+AI-powered professional headshot generator - upload a portrait, choose or customize a style, preview the transformation, and export the finished image.
 
 ## Demo Link
 
-Access the live demo at ([https://your-demo-url.com/](http://localhost:5173/)) — the app can also be run locally; see [Setup](#setup)).*
+Access the live demo at ([https://your-demo-url.com/](http://localhost:5173/)) - the app is ran locally; see [Setup](#setup)).*
 
 ## Table of Contents
 
@@ -111,8 +111,6 @@ This foundation of the project was initially built by following the [Build a Pro
 MIT License © [Raymond Pang](https://github.com/RaymondPang2)
 
 Review the original tutorial and any provided starter code for applicable licensing terms before redistributing or using tutorial-derived code commercially.
-
----
 
 **Final Words:**
 

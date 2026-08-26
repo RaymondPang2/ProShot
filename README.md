@@ -36,16 +36,6 @@ The application uses Cloudinary's generative image transformations to replace ba
 - Responsive design for desktop and mobile devices
 - Custom background descriptions for personalized AI-generated settings
 
-## Screenshots
-
-Add your main application screenshot here:
-
-```md
-![ProShot preview](docs/screenshots/proshot-preview.png)
-```
-
-More screenshots of the upload screen, preset selection, generated results, and export controls can be added to `docs/screenshots/`.
-
 ## Technologies
 
 I used `React`, `TypeScript`, `Vite`, `Tailwind CSS`, `Cloudinary`, `React Dropzone`, and `Lucide React`.

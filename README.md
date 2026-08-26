@@ -4,14 +4,13 @@ AI-powered professional headshot generator - upload a portrait, choose or custom
 
 ## Demo Link
 
-The app is ran locally; see [Setup](#setup)).
+The app is ran locally; see [Setup](#setup).
 
 Or watch the captioned video demo: https://drive.google.com/file/d/1BhnjTBSjyXYBaOiz38Wv4vm_NHf7A6E_/view?usp=sharing
 
 ## Table of Contents
 
 - [About the App](#about-the-app)
-- [Screenshots](#screenshots)
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Approach](#approach)
